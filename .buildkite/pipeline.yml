@@ -1,3 +1,10 @@
 steps:
   - label: "Example Test"
     command: echo "Hello!"
+    key: pull-request
+
+  - label: ":desktop_computer:"
+    command: echo "Here is where is gonna start the script running"
+    depends_on: 
+    - pull-request
+    
