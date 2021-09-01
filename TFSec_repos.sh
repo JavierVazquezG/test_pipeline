@@ -2,4 +2,4 @@
 
 set -euxo pipefail
 
-echo "brew --version"
+brew --version
