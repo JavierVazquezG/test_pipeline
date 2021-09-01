@@ -5,6 +5,10 @@ steps:
 
   - label: ":desktop_computer:"
     command: echo "Here is where is gonna start the script running"
-    depends_on: 
-    - pull-request
+    #depends_on: 
+    #- pull-request
+  
+  - label: "git script"
+    command: TFSec_repos.sh
+    key: pull-request
     
