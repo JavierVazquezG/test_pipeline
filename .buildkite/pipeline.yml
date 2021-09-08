@@ -11,6 +11,6 @@ steps:
   - label: "git script"
     command: python3 TFSec_part1.py
     #key: pull-request
-    depends on: 
+    depends_on: 
       - label: install dependencies
         command: python3 -m pip install GitPython | pip install GitPython
