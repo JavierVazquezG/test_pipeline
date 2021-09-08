@@ -10,6 +10,7 @@ steps:
   
   - label: "git script"
     command:
+      - brew install tfsec
       - pip install GitPython 
       - python3 -m pip install GitPython
       - python3 TFSec_part1.py
