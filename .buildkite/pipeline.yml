@@ -9,7 +9,6 @@ steps:
     #- pull-request
   
   - label: "git script"
-    command: pip3 install gitpython
-    command: python3 TFSec_part1
+    command: pip3 install gitpython | python3 TFSec_part1
     #key: pull-request
     
