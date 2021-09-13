@@ -9,7 +9,7 @@ steps:
       - python3 TFSec_part1.py
     #artifact_paths: "tfsec-*"
   - name: ":python:"
-    command: "TFSec_part1.py"
+    command: "python3 TFSec_part1.py"
     plugins:
       - docker-compose#v3.7.0:
           run: app
