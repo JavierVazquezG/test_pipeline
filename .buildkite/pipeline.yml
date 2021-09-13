@@ -6,6 +6,7 @@ steps:
     command:
       - pip install GitPython 
       - python3 -m pip install GitPython
+      - pip install --user pipenv
       - pipenv install --deploy --dev
       - pipenv run TFSec_part1.py
       #- python3 TFSec_part1.py
