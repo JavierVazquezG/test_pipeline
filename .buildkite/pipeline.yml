@@ -1,8 +1,4 @@
 steps:
-  - label: "Example Test"
-    command: echo "Hello!"
-    #key: pull-request
-
   - label: ":git: Script"
     env:
       # This value should never change for builds to artifactory
@@ -10,5 +6,7 @@ steps:
     command:
       - pip install GitPython 
       - python3 -m pip install GitPython
-      - python3 TFSec_part1.py
+      - pipenv install --deploy --dev
+      - pipenv run TFSec_part1.py
+      #- python3 TFSec_part1.py
     #artifact_paths: "tfsec-*"
