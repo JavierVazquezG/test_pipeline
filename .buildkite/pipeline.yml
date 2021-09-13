@@ -4,11 +4,12 @@ steps:
       # This value should never change for builds to artifactory
       # BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: "rt://TFSec"
     command:
-      - echo "export PATH="$HOME/.local/bin:$PATH"" >> ~/.bashrc
       - pip install GitPython 
       - python3 -m pip install GitPython
-      - pip install pipenv
-      - pipenv install --deploy --dev
-      - pipenv run TFSec_part1.py
-      #- python3 TFSec_part1.py
+      - python3 TFSec_part1.py
     #artifact_paths: "tfsec-*"
+  - name: ":python:"
+    command: "TFSec_part1.py"
+    plugins:
+      - docker-compose#v3.7.0:
+          run: app
