@@ -4,6 +4,7 @@ steps:
       # This value should never change for builds to artifactory
       # BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: "rt://TFSec"
     command:
+      - echo "export PATH="$HOME/.local/bin:$PATH"" >> ~/.bashrc
       - pip install GitPython 
       - python3 -m pip install GitPython
       - pip install pipenv
