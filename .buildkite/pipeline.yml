@@ -3,7 +3,7 @@ steps:
     command: echo "Hello!"
     #key: pull-request
 
-  - label: "git script"
+  - label: ":git: Script"
     env:
       # This value should never change for builds to artifactory
       # BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: "rt://TFSec"

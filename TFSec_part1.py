@@ -38,3 +38,7 @@ if __name__ == '__main__':
 
                     os.chdir(path)
                     shutil.rmtree('cloneReposDirectory')
+                    
+                    files = os.listdir("~/Tools/")
+                    for f in files:
+                        print(f)
