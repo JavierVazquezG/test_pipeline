@@ -12,7 +12,6 @@ headers = {
 }
 
 if __name__ == '__main__':
-        os.system("brew install tfsec")
         for page in range(1,28):
             response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
             data = response.json()
@@ -32,10 +31,10 @@ if __name__ == '__main__':
                     os.mkdir(reposName)
                     os.chdir(reposName)
                     git.Repo.clone_from(ssh_clone_url, '.')
-                    os.system("tfsec . --format csv --out TFSec_Report_"+reposName+".csv")
+                    os.system("docker run -it -v \"$(pwd):/src\" tfsec/tfsec /src --format csv > $(pwd)/TFSec_Report_"+reposName+".csv")
+                    os.mkdir('~/Tools/')
                     os.system("mv TFSec_Report_"+reposName+".csv ~/Tools/")
                     os.chdir("../..")
 
                     os.chdir(path)
                     shutil.rmtree('cloneReposDirectory')
-            print(os.system("cd ~/Tools | ls -l"))

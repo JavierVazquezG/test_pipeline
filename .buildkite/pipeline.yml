@@ -3,16 +3,12 @@ steps:
     command: echo "Hello!"
     #key: pull-request
 
-  - label: ":desktop_computer:"
-    command: echo "Here is where is gonna start the script running"
-    #depends_on: 
-    #- pull-request
-  
   - label: "git script"
+    env:
+      # This value should never change for builds to artifactory
+      # BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: "rt://TFSec"
     command:
-      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - brew install tfsec
       - pip install GitPython 
       - python3 -m pip install GitPython
       - python3 TFSec_part1.py
-    #key: pull-request
+    #artifact_paths: "tfsec-*"
