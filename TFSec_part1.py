@@ -36,5 +36,5 @@ if __name__ == '__main__':
                     os.system("mv TFSec_Report_"+reposName+".csv ../../Reports")
                     os.chdir(path)
                     shutil.rmtree('cloneReposDirectory')
-            os.system("mv Reports ~/.")
+        os.system("mv Reports ~/.")
                 
