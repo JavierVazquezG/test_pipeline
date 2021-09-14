@@ -32,6 +32,7 @@ if __name__ == '__main__':
                     os.chdir(reposName)
                     git.Repo.clone_from(ssh_clone_url, '.')
                     os.system("docker run -it -v \"$(pwd):/src\" tfsec/tfsec /src --format csv > $(pwd)/TFSec_Report_"+reposName+".csv")
+                    os.system(print("$(pwd)"))
                     os.mkdir('Tools')
                     os.system("mv TFSec_Report_"+reposName+".csv Tools/")
                     os.chdir("../..")

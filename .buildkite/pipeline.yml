@@ -10,8 +10,8 @@ steps:
       - buildkite-agent artifact upload Tools/*
     artifact_paths: "Tools/*"
 
-  - name: ":docker: :python:"
-    command: "python3 TFSec_part1.py"
-    plugins:
-      - docker-compose#v3.7.0:
-          run: app
+  # - name: ":docker: :python:"
+  #   command: "python3 TFSec_part1.py"
+  #   plugins:
+  #     - docker-compose#v3.7.0:
+  #         run: app
