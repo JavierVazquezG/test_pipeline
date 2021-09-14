@@ -7,10 +7,10 @@ steps:
       - pip install GitPython 
       - python3 -m pip install GitPython
       - python3 TFSec_part1.py
-    #artifact_paths: "reports/TFSec_Report_*"
+    artifact_paths: "reports/*"
 
   - name: ":docker: :python:"
-     command: "python3 TFSec_part1.py"
-     plugins:
-       - docker-compose#v3.7.0:
-           run: app
+    command: "python3 TFSec_part1.py"
+    plugins:
+      - docker-compose#v3.7.0:
+          run: app
