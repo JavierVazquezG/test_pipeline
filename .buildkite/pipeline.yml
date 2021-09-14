@@ -7,7 +7,7 @@ steps:
       - pip install GitPython 
       - python3 -m pip install GitPython
       - python3 TFSec_part1.py
-    artifact_paths: "reports/TFSec_Report_*"
+    #artifact_paths: "reports/TFSec_Report_*"
 
   # - name: ":docker: :python:"
   #   command: "python3 TFSec_part1.py"
