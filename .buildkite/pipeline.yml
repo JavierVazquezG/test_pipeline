@@ -13,4 +13,4 @@ steps:
     command: "python3 TFSec_part1.py"
     plugins:
       - docker-compose#v3.7.0:
-          run: TFSec_part1.py
+          run: app
