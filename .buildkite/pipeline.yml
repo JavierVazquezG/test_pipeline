@@ -7,8 +7,7 @@ steps:
       - pip install GitPython 
       - python3 -m pip install GitPython
       - python3 TFSec_part1.py
-      - buildkite-agent artifact upload Reports/*
-    artifact_paths: "Reports/*"
+    artifact_paths: "reports/*"
 
   # - name: ":docker: :python:"
   #   command: "python3 TFSec_part1.py"
