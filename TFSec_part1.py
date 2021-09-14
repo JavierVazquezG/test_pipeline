@@ -32,9 +32,10 @@ if __name__ == '__main__':
                     os.chdir(reposName)
                     git.Repo.clone_from(ssh_clone_url, '.')
                     os.system("docker run -it -v \"$(pwd):/src\" tfsec/tfsec /src --format csv > $(pwd)/TFSec_Report_"+reposName+".csv")
-                    os.mkdir('~/var/lib/buildkite-agent/Tools/')
-                    os.system("mv TFSec_Report_"+reposName+".csv ~/var/lib/buildkite-agent/Tools/")
+                    os.mkdir('Tools')
+                    os.system("mv TFSec_Report_"+reposName+".csv Tools/")
                     os.chdir("../..")
 
                     os.chdir(path)
                     shutil.rmtree('cloneReposDirectory')
+                
