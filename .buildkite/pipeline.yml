@@ -1,16 +1,16 @@
 steps:
-  - label: ":git: Script"
-    env:
-      # This value should never change for builds to artifactory
-      BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: "rt://TFSec"
-    command:
-      - pip install GitPython 
-      - python3 -m pip install GitPython
-      - python3 TFSec_part1.py
-    #artifact_paths: "reports/TFSec_Report_*"
+  # - label: ":git: Script"
+  #   env:
+  #     # This value should never change for builds to artifactory
+  #     BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: "rt://TFSec"
+  #   command:
+  #     - pip install GitPython 
+  #     - python3 -m pip install GitPython
+  #     - python3 TFSec_part1.py
+  #   #artifact_paths: "reports/TFSec_Report_*"
 
-  # - name: ":docker: :python:"
-  #   command: "python3 TFSec_part1.py"
-  #   plugins:
-  #     - docker-compose#v3.7.0:
-  #         run: app
+  - name: ":docker: :python:"
+     command: "python3 TFSec_part1.py"
+     plugins:
+       - docker-compose#v3.7.0:
+           run: app
