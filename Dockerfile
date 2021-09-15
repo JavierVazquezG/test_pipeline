@@ -1,6 +1,8 @@
-FROM       python:3
-ADD        TFSec_part1.py /
-WORKDIR    /
-ENV        PYTHONPATH "${PYTHONPATH}:/"
+FROM       python
+RUN        pip install pipenv
+COPY       . /app
+WORKDIR    /app
+RUN        pipenv install --deploy --dev
 ENV        SHELL=/bin/bash
-CMD        ["python", "TFSec_part1.py"]
+ENTRYPOINT ["pipenv", "run"]
+CMD        ["python"]
