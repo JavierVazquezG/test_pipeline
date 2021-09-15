@@ -1,8 +1,7 @@
 FROM       python:3
-RUN        pip install pipenv
-COPY       . /app
+ADD        TFSec_part1.py /
 WORKDIR    /
-RUN        pip install GitPython && pipenv install --deploy --dev
+RUN        pipenv install --deploy --dev
 ENV        SHELL=/bin/bash
 ENTRYPOINT ["pipenv", "run"]
-CMD        ["python3 TFSec_part1.py"]
+CMD        ["python", "./TFSec_part1.py"]
