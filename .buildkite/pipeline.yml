@@ -9,8 +9,15 @@ steps:
   #     - python3 TFSec_part1.py
   #   artifact_paths: "reports/*"
 
-  - label: ":docker: :python:"
-    command: "python3 TFSec_part1.py"
+  # - label: ":docker: :python:"
+  #   command: "python3 TFSec_part1.py"
+  #   plugins:
+  #     - docker-compose#v3.7.0:
+  #         run: app
+
+  steps:
+  - name: ":python:"
+    command: "py.test"
     plugins:
       - docker-compose#v3.7.0:
           run: app
