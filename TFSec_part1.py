@@ -34,4 +34,4 @@ if __name__ == '__main__':
                     os.system("docker run -it -v \"$(pwd):/src\" tfsec/tfsec /src --format csv > $(pwd)/TFSec_Report_"+reposName+".csv")
                     os.chdir(path)
                     shutil.rmtree('cloneReposDirectory')
-                    os.system("echo 'HELLO'")
+                    print("HELLO THERE")
