@@ -14,7 +14,7 @@ steps:
   #   plugins:
   #     - docker-compose#v3.7.0:
   #         run: app
-  - label: ":python:"
+  - label: ":docker::python:"
     #command: "py.test"
     plugins:
       - docker-compose#v3.7.0:
