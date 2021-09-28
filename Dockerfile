@@ -1,6 +1,9 @@
-FROM python:3.6-slim
-RUN apt-get update && apt-get install -y curl git
-RUN pip install requests && pip install gitpython
-ADD TFSec_part1 ~/tmp/
-CMD ["~/tmp/TFSec_part1.py"]
-ENTRYPOINT [ "python3" ]
+FROM linuxbrew/brew
+WORKDIR /usr/src/app
+
+RUN brew install tfsec && brew install python3 && brew install git
+RUN pip3 install requests && pip3 install gitpython
+
+COPY . .
+CMD ["test.py"]
+ENTRYPOINT ["python3"]
