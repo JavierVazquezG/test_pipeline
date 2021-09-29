@@ -19,3 +19,10 @@ steps:
     plugins:
       - docker-compose#v3.7.0:
           run: app
+  
+  - label: ":upload::package:"
+    plugins:
+      - aws-upload:
+          source-path: "/Reports/"
+          destination-path: "s3:/reports-amount-tfsec/2021-09-29/"
+          #profile-name: "profile_abc"
