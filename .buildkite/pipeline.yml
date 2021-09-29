@@ -20,9 +20,8 @@ steps:
       - docker-compose#v3.7.0:
           run: app
   - wait
-  - label: ":upload::package:"
+  - label: "Generate files and push to S3 :package:"
     plugins:
-      - aws-upload:
-          source-path: "/Reports/"
-          destination-path: "s3:/reports-amount-tfsec/2021-09-29/"
-          #profile-name: "profile_abc"
+      - envato/aws-s3-sync#v0.3.0:
+          source: Reports/
+          destination: s3:/reports-amount-tfsec/2021-09-29/
