@@ -1,5 +1,9 @@
+env:
+  ARTIFACTORY_SERVER: 'docker.artifactory.internal.amount.com'
 steps:
-  - label: ":docker::python:"
+  - agents:
+      queue: eks-buildkite-agent
+    label: ":docker::python:"
     plugins:
       - docker-compose#v3.7.0:
           run: app
