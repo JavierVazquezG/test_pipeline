@@ -6,12 +6,21 @@ import datetime
 import os
 import shutil
 import git
+import datetime
 
 headers = {
     'accept': 'application/vnd.github.vixen-preview+json',
     'content-type': 'application/json',
 }
 
+
+def createFolder():
+    date = datetime.datetime.now()
+    folder_name = date.strftime('%Y-%m-%d')
+    bucket_name = "amount-shared-cicd-security-reports.use2"
+    os.system("aws s3 cp ~/Reports/* s3://{bucket_name}/{folder_name}/ --region us-east-2")
+
+    
 if __name__ == '__main__':
     for page in range(1,28):
         response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
@@ -19,9 +28,6 @@ if __name__ == '__main__':
 
         for repo in data:
             if(repo["language"] == 'HCL'):
-                date = datetime.datetime.now()
-                folder_name = date.strftime('%Y-%m-%d')
-                
                 reposName = repo["name"]
                 ssh_clone_url = repo["ssh_url"]
                 path = os.getcwd()
@@ -38,3 +44,4 @@ if __name__ == '__main__':
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
                 os.chdir(path)
                 shutil.rmtree('cloneReposDirectory')
+    createFolder()
