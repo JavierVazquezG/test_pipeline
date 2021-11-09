@@ -3,7 +3,8 @@ env:
 steps:
   - agents:
       queue: eks-buildkite-agent
-    label: ":docker::python:"
+    label: ":docker::python::aws:"
     plugins:
       - docker-compose#v3.7.0:
           run: app
+    command: './test_pipeline/copyFiles.sh'

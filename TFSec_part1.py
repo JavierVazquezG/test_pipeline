@@ -14,11 +14,11 @@ headers = {
 }
 
 
-def createFolder():
-    date = datetime.datetime.now()
-    folder_name = date.strftime('%Y-%m-%d')
-    bucket_name = "amount-shared-cicd-security-reports.use2"
-    os.system("aws s3 cp ~/Reports/* s3://{bucket_name}/{folder_name}/ --region us-east-2")
+# def createFolder():
+#     date = datetime.datetime.now()
+#     folder_name = date.strftime('%Y-%m-%d')
+#     bucket_name = "amount-shared-cicd-security-reports.use2"
+#     os.system("aws s3 cp ~/Reports/* s3://{bucket_name}/{folder_name}/ --region us-east-2")
 
     
 if __name__ == '__main__':
@@ -44,4 +44,3 @@ if __name__ == '__main__':
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
                 os.chdir(path)
                 shutil.rmtree('cloneReposDirectory')
-    createFolder()
