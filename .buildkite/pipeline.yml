@@ -11,5 +11,5 @@ steps:
   - wait
   - label: "Shell script"
     agents:
-      queue: eks-buildkite-agent
+      name: "$name"
     commands: 'copyFiles.sh'
