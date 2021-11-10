@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 name=$(buildkite-agent meta-data get name)
 
