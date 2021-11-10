@@ -1,15 +1,5 @@
 env:
   ARTIFACTORY_SERVER: 'docker.artifactory.internal.amount.com'
 steps:
-  - agents:
-      queue: eks-buildkite-agent
-    label: ":docker::python::aws:"
-    plugins:
-      - docker-compose#v3.7.0:
-          run: app
-    #command: './test_pipeline/copyFiles.sh'
-  - wait
-  - label: "Shell script"
-    agents:
-      name: "$name"
-    commands: 'copyFiles.sh'
+  - command: './test_pipeline/define_steps.sh | buildkite-agent pipeline upload'
+    label: ':pipeline: Pipeline Upload'

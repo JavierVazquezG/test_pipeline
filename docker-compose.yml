@@ -5,5 +5,3 @@ services:
     build: .
     volumes:
       - .:/Reports
-    #volumes:
-    # - ".:~/Reports:r"
