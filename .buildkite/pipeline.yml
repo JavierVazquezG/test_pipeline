@@ -9,4 +9,4 @@ steps:
           run: app
     #command: './test_pipeline/copyFiles.sh'
     label: "Shell script"
-    command: echo "HELLLOOOOOOOO!"
+    commands: 'echo HELLLOOOOOOOO!'
