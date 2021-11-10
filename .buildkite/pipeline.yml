@@ -5,3 +5,5 @@ steps:
       - "chmod +x define_steps.sh"  
       - "./define_steps.sh | buildkite-agent pipeline upload"
     label: ':pipeline: Pipeline Upload'
+    agents: 
+      queue: eks-buildkite-agent
