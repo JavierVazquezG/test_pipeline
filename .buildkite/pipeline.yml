@@ -10,4 +10,6 @@ steps:
     #command: './test_pipeline/copyFiles.sh'
   - wait
   - label: "Shell script"
+    agents:
+      queue: eks-buildkite-agent
     commands: 'copyFiles.sh'
