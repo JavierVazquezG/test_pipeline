@@ -1,5 +1,7 @@
 env:
   ARTIFACTORY_SERVER: 'docker.artifactory.internal.amount.com'
 steps:
-  - command: './define_steps.sh | buildkite-agent pipeline upload'
+  - commands: 
+      - "chmod +x define_steps.sh"  
+      - "./define_steps.sh | buildkite-agent pipeline upload"
     label: ':pipeline: Pipeline Upload'
