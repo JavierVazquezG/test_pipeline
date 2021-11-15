@@ -5,7 +5,7 @@ name=$(buildkite-agent meta-data get name)
 cat << EOF
   - name: "Docker Image - Python Script" 
     agents:
-      queue: eks-buildkite-agent
+      name: "$name"
     label: ":docker::python::aws:"
     plugins:
       - docker-compose#v3.7.0:
