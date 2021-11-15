@@ -18,6 +18,7 @@ def install_aws():
 
 if __name__ == '__main__':
     install_aws()
+    
     for page in range(1,32):
         response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
         data = response.json()
@@ -38,9 +39,6 @@ if __name__ == '__main__':
                     os.system("mkdir ~/Reports")
                 os.system("tfsec . --format csv --out TFSec_Report_"+reposName+".csv")
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
+                os.listdir("~/Reports")
                 os.chdir(path)
-                os.system("ls -l ~/Reports")
-                today = date.today()
-                CURRENTDATE = today.strftime("%m/%d/%y")
-                os.system("aws s3 cp ~/Reports s3://amount-shared-cicd-security-reports.use2/${CURRENTDATE} --region us-east-2")
                 shutil.rmtree('cloneReposDirectory')
