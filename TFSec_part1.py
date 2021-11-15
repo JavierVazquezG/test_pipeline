@@ -35,7 +35,7 @@ if __name__ == '__main__':
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
                 os.chdir(path)
                 shutil.rmtree('cloneReposDirectory')
-        os.system("curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"")
+        os.system('curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"')
         os.system("unzip awscliv2.zip")
         os.system("sudo ./aws/install")
         today = date.today()
