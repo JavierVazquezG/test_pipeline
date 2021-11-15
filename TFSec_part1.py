@@ -11,8 +11,13 @@ headers = {
     'accept': 'application/vnd.github.vixen-preview+json',
     'content-type': 'application/json',
 }
+def install_aws():
+    os.system('curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"')
+    os.system("unzip awscliv2.zip")
+    os.system("sudo ./aws/install")
 
 if __name__ == '__main__':
+    install_aws()
     for page in range(1,32):
         response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
         data = response.json()
@@ -35,9 +40,6 @@ if __name__ == '__main__':
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
                 os.chdir(path)
                 shutil.rmtree('cloneReposDirectory')
-        os.system('curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"')
-        os.system("unzip awscliv2.zip")
-        os.system("sudo ./aws/install")
-        today = date.today()
-        CURRENTDATE = today.strftime("%m/%d/%y")
-        os.system("aws s3 cp ~/Reports s3://amount-shared-cicd-security-reports.use2/${CURRENTDATE} --region us-east-2")
+            today = date.today()
+            CURRENTDATE = today.strftime("%m/%d/%y")
+            os.system("aws s3 cp ~/Reports s3://amount-shared-cicd-security-reports.use2/${CURRENTDATE} --region us-east-2")
