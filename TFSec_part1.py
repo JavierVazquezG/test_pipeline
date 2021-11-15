@@ -39,6 +39,7 @@ if __name__ == '__main__':
                     os.system("mkdir ~/Reports")
                 os.system("tfsec . --format csv --out TFSec_Report_"+reposName+".csv")
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
-                os.listdir("~/Reports")
+                list = os.listdir("~/Reports")
+                print(list)
                 os.chdir(path)
                 shutil.rmtree('cloneReposDirectory')
