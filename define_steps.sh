@@ -1,6 +1,8 @@
 #!/bin/bash
 
-name=$(buildkite-agent meta-data get name)
+#name=$(buildkite-agent meta-data get name)
+name=$(hostname)
+echo $name
 
 cat << EOF
   - name: "Docker Image - Python Script" 
