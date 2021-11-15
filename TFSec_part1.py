@@ -40,6 +40,7 @@ if __name__ == '__main__':
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
                 os.chdir(path)
                 shutil.rmtree('cloneReposDirectory')
+                os.system("ls -l ~/Reports")
             today = date.today()
             CURRENTDATE = today.strftime("%m/%d/%y")
             os.system("aws s3 cp ~/Reports s3://amount-shared-cicd-security-reports.use2/${CURRENTDATE} --region us-east-2")
