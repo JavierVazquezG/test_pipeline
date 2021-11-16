@@ -40,9 +40,19 @@ if __name__ == '__main__':
                 os.system("tfsec . --format csv --out TFSec_Report_"+reposName+".csv")
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
                 list = os.listdir("~/Reports")
-                print(list)
-                print("Next list")
-                list2 = os.listdir("~/")
-                print(list2)
+                dir = os.listdir(path)
+  
+                # Checking if the list is empty or not
+                if len(dir) == 0:
+                    print("Empty directory")
+                else:
+                    print("Not empty directory")
+                    
+                # Checking if the list is empty or not
+                if len(list) == 0:
+                    print("Empty directory")
+                else:
+                    print("Not empty directory")
+                
                 os.chdir(path)
                 shutil.rmtree('cloneReposDirectory')
