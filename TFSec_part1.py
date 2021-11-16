@@ -5,19 +5,28 @@ import requests
 import os
 import shutil
 import git
+import boto3
+import botocore
+import datetime
 from datetime import date
 
 headers = {
     'accept': 'application/vnd.github.vixen-preview+json',
     'content-type': 'application/json',
 }
-def install_aws():
-    os.system('curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"')
-    os.system("unzip awscliv2.zip")
-    os.system("sudo ./aws/install")
+
+# Get environment variables
+S3Bucket = os.getenv('S3_BUCKET')
+
+#Setting the session of the boto3
+session = boto3.Session()
+
+def updateS3Bucket(S3Bucket, filename, key):
+    s3 = session.client('s3')
+    s3.upload_file('~/Reports/'+filename, S3Bucket, key)
 
 if __name__ == '__main__':
-    install_aws()
+    print(boto3.client('sts').get_caller_identity()['Account'])
     
     for page in range(1,32):
         response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
@@ -25,6 +34,8 @@ if __name__ == '__main__':
 
         for repo in data:
             if(repo["language"] == 'HCL'):
+                date = datetime.datetime.now()
+                folder_name = date.strftime('%Y-%m-%d')
                 reposName = repo["name"]
                 ssh_clone_url = repo["ssh_url"]
                 path = os.getcwd()
@@ -39,20 +50,7 @@ if __name__ == '__main__':
                     os.system("mkdir ~/Reports")
                 os.system("tfsec . --format csv --out TFSec_Report_"+reposName+".csv")
                 os.system("mv TFSec_Report_"+reposName+".csv ~/Reports/")
-                list = os.listdir("~/Reports")
-                dir = os.listdir(path)
-  
-                # Checking if the list is empty or not
-                if len(dir) == 0:
-                    print("Empty directory")
-                else:
-                    print("Not empty directory")
-                    
-                # Checking if the list is empty or not
-                if len(list) == 0:
-                    print("Empty directory")
-                else:
-                    print("Not empty directory")
-                
+                file_Report = "TFSec_Report_"+reposName+".csv"
+                updateS3Bucket(S3Bucket, folder_name, file_Report)
                 os.chdir(path)
                 shutil.rmtree('cloneReposDirectory')
