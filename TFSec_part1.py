@@ -30,17 +30,10 @@ if __name__ == '__main__':
     
     os.system("mkdir Reports")
     os.system("touch test.txt")
-    os.system("mv test.txt ~/Reports")
-    folder_name = date.strftime('%Y-%m-%d')
-    updateS3Bucket(S3Bucket, folder_name, "test.txt")
+    os.system("mv test.txt ~/usr/src/app/Reports")
+    updateS3Bucket(S3Bucket, "18", "test.txt")
     
-    
-    
-    
-    
-    
-    
-    
+
     #for page in range(1,32):
     #    response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
     #    data = response.json()
