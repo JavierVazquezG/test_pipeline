@@ -23,14 +23,14 @@ session = boto3.Session()
 
 def updateS3Bucket(S3Bucket, filename, key):
     s3 = session.client('s3')
-    s3.upload_file('~/usr/src/app/Reports/'+filename, S3Bucket, key)
+    s3.upload_file('~/'+filename, S3Bucket, key)
 
 if __name__ == '__main__':
     print(boto3.client('sts').get_caller_identity()['Account'])
     
-    os.system("mkdir Reports")
-    os.system("touch test.txt")
-    os.system("mv test.txt ~/usr/src/app/Reports")
+    #os.system("mkdir Reports")
+    os.system("touch ~/test.txt")
+    #os.system("mv test.txt ~/usr/src/app/Reports")
     updateS3Bucket(S3Bucket, "18", "test.txt")
     
 
