@@ -29,8 +29,10 @@ if __name__ == '__main__':
     print(boto3.client('sts').get_caller_identity()['Account'])
     
     #os.system("mkdir Reports")
-    os.system("touch ~/test.txt")
+    os.system("touch test.txt")
     os.system("ls -lrt ~/" )
+    os.system("cd ~")
+    os.system("pwd")
     #os.system("mv test.txt ~/usr/src/app/Reports")
     updateS3Bucket(S3Bucket, "test.txt", "18")
     
