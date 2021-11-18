@@ -31,7 +31,7 @@ if __name__ == '__main__':
     #os.system("mkdir Reports")
     os.system("touch ~/test.txt")
     #os.system("mv test.txt ~/usr/src/app/Reports")
-    updateS3Bucket(S3Bucket, "18", "test.txt")
+    updateS3Bucket(S3Bucket, "test.txt", "18")
     
 
     #for page in range(1,32):
