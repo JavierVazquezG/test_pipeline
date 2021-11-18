@@ -30,6 +30,7 @@ if __name__ == '__main__':
     
     #os.system("mkdir Reports")
     os.system("touch ~/test.txt")
+    os.system("ls -lrt ~/" )
     #os.system("mv test.txt ~/usr/src/app/Reports")
     updateS3Bucket(S3Bucket, "test.txt", "18")
     
