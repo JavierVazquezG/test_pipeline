@@ -14,11 +14,17 @@ from datetime import date
 S3Bucket = os.getenv('S3_BUCKET')
 TOKEN_API = os.getenv('GIT_API')
 
+# headers = {
+#     'accept': 'application/vnd.github.vixen-preview+json',
+#     'authorization': TOKEN_API,
+#     'content-type': 'application/json',
+# }
+
+authorization = f'token {TOKEN_API}'
 headers = {
-    'accept': 'application/vnd.github.vixen-preview+json',
-    'authorization': TOKEN_API,
-    'content-type': 'application/json',
-}
+    "Accept": "application/vnd.github.v3+json",
+    "Authorization" : authorization,
+    }
 
 #Setting the session of the boto3
 session = boto3.Session()
