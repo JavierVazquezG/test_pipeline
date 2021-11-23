@@ -16,7 +16,7 @@ TOKEN_API = os.getenv('GIT_API')
 
 headers = {
     'accept': 'application/vnd.github.vixen-preview+json',
-    'authorization': 'Bearer '+TOKEN_API,
+    'authorization': TOKEN_API,
     'content-type': 'application/json',
 }
 
