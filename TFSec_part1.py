@@ -40,7 +40,9 @@ if __name__ == '__main__':
     for page in range(1,32):
        response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
        data = response.json()
-
+       
+       os.system("print ${data}")
+       
        for repo in data:
            if(repo["language"] == 'HCL'):
                #date = datetime.datetime.now()
