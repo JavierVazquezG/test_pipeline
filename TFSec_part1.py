@@ -41,7 +41,7 @@ if __name__ == '__main__':
        response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
        data = response.json()
        
-       os.system("print ${data}")
+       print ("${data}")
        
        for repo in data:
            if(repo["language"] == 'HCL'):
