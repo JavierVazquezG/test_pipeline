@@ -10,13 +10,15 @@ import botocore
 import datetime
 from datetime import date
 
-headers = {
-    'accept': 'application/vnd.github.vixen-preview+json',
-    'content-type': 'application/json',
-}
-
 # Get environment variables
 S3Bucket = os.getenv('S3_BUCKET')
+TOKEN_API = os.getenv('GIT_API')
+
+headers = {
+    'accept': 'application/vnd.github.vixen-preview+json',
+    'authorization': 'Bearer '+TOKEN_API,
+    'content-type': 'application/json',
+}
 
 #Setting the session of the boto3
 session = boto3.Session()
