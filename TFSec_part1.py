@@ -14,17 +14,11 @@ from datetime import date
 S3Bucket = os.getenv('S3_BUCKET')
 TOKEN_API = os.getenv('GIT_API')
 
-# headers = {
-#     'accept': 'application/vnd.github.vixen-preview+json',
-#     'authorization': TOKEN_API,
-#     'content-type': 'application/json',
-# }
-
-authorization = f'token {TOKEN_API}'
 headers = {
-    "Accept": "application/vnd.github.v3+json",
-    "Authorization" : authorization,
-    }
+    'accept': 'application/vnd.github.vixen-preview+json',
+    'authorization': TOKEN_API,
+    'content-type': 'application/json',
+}
 
 #Setting the session of the boto3
 session = boto3.Session()
@@ -44,7 +38,7 @@ if __name__ == '__main__':
     
 
     for page in range(1,32):
-       response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page), headers=headers)
+       response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page)+'&per_page=100', headers=headers)
        data = response.json()
        
        print (data)
