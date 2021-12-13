@@ -2,9 +2,9 @@
 
 import requests
 import json
-
+import os
+token = os.getenv('GIT_API')
 username = 'jfr10v'
-token = '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'
 
 repos_url = 'https://api.github.com/orgs/amount/repos'
 
