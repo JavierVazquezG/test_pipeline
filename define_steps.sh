@@ -8,6 +8,8 @@ cat << EOF
     plugins:
       - docker-compose#v3.7.0:
           run: app
+          volumes:
+            - "/root/.ssh/:/root/.ssh/"
 EOF
 #  - wait
 #  - name: "Copying Files"
