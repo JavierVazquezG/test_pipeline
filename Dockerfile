@@ -12,7 +12,7 @@ RUN mkdir /usr/local/src/vault && \
 RUN cd /usr/local/src/vault && sha256sum --quiet -c vault_${VAULT_VERSION}_linux_amd64.zip.sha256 && \
     if [ $? -eq 0 ]; then unzip /usr/local/src/vault/vault*.zip -d /usr/local/bin/ && rm -f /usr/local/src/vault/vault*.zip ; else exit 1 ; fi
 
-COPY ./ssh-config
+COPY ./ssh-config /docker-entrypoint.d/
 
 COPY . .
 CMD ["TFSec_part1.py"]
