@@ -1,4 +1,5 @@
 FROM linuxbrew/brew
+ARG VAULT_VERSION=0.10.1
 WORKDIR /usr/src/app
 
 RUN brew install tfsec && brew install python3 && brew install git && brew install wget
