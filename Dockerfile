@@ -1,7 +1,7 @@
 FROM linuxbrew/brew
 WORKDIR /usr/src/app
 
-RUN brew install tfsec && brew install python3 && brew install git
+RUN brew install tfsec && brew install python3 && brew install git && brew install wget
 RUN pip3 install requests && pip3 install gitpython && pip3 install boto3
 # Install the vault CLI securely
 RUN mkdir /usr/local/src/vault && \
