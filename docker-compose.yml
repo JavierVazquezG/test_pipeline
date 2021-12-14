@@ -6,3 +6,4 @@ services:
     environment:
       - S3_BUCKET
       - GIT_API
+    volumes: /root/.ssh/:./ssh/
