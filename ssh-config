@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Function to check that variables are set
+function requireVar() {
+    if [ -z "${!1+x}" ]; then
+        echo "ERROR: $1 is a required variable but is not set" >&2
+        exit 1
+    fi
+}
+
+requireVar VAULT_ADDR
+requireVar VAULT_ROLE_ID
+requireVar VAULT_SECRET_ID
+echo "Logging into vault."
+VAULT_TOKEN=$(vault write -format=json auth/approle/login role_id="$VAULT_ROLE_ID" secret_id="$VAULT_SECRET_ID" | jq -r .auth.client_token)
+export VAULT_TOKEN="$VAULT_TOKEN"
+echo "Logged into vault successfully."
+
+mkdir ~/.ssh
+GIT_SSH_KEY=$(vault kv get -format="json" credentials/ssh/github_service_account | jq -r .data.data.private_key)
+cat << EOF > ~/.ssh/id_rsa
+${GIT_SSH_KEY}
+EOF
+chmod 600 ~/.ssh/id_rsa
