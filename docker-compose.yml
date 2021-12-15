@@ -6,6 +6,3 @@ services:
     environment:
       - S3_BUCKET
       - GIT_API
-      - VAULT_ADDR
-      - VAULT_ROLE_ID
-      - VAULT_SECRET_ID
