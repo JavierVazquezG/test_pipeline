@@ -8,7 +8,6 @@ cat << EOF
     plugins:
       - docker-compose#v3.7.0:
           run: app
-          command: ["/docker-entrypoint.d/ssh-config"]
           env:
             - VAULT_ADDR
             - VAULT_ROLE_ID
