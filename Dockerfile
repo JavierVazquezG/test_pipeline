@@ -19,7 +19,7 @@ RUN cd /usr/local/src/vault && sha256sum --quiet -c vault_${VAULT_VERSION}_linux
     if [ $? -eq 0 ]; then unzip /usr/local/src/vault/vault*.zip -d /usr/local/bin/ && rm -f /usr/local/src/vault/vault*.zip ; else exit 1 ; fi
 
 COPY ./ssh-config /docker-entrypoint.d/
-RUN chmod +x /docker-entrypoint.d/ssh-config && /docker-entrypoint.d/ssh-config && mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+RUN chmod +x /docker-entrypoint.d/ssh-config && mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 COPY . .
 CMD ["TFSec_part1.py"]
 ENTRYPOINT ["python3"]
