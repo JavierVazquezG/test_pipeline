@@ -22,4 +22,4 @@ COPY ./ssh-config /docker-entrypoint.d/
 RUN chmod +x /docker-entrypoint.d/ssh-config && mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 COPY . .
 CMD ["TFSec_part1.py"]
-ENTRYPOINT ["/docker-entrypoint.d/ssh-config && python3"]
+ENTRYPOINT ["/bin/sh", "-c" , "python3 && /docker-entrypoint.d/ssh-config"]
