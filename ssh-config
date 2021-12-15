@@ -16,7 +16,6 @@ VAULT_TOKEN=$(vault write -format=json auth/approle/login role_id="$VAULT_ROLE_I
 export VAULT_TOKEN="$VAULT_TOKEN"
 echo "Logged into vault successfully."
 
-mkdir ~/.ssh
 GIT_SSH_KEY=$(vault kv get -format="json" credentials/ssh/github_service_account | jq -r .data.data.private_key)
 cat << EOF > ~/.ssh/id_rsa
 ${GIT_SSH_KEY}
