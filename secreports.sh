@@ -1,5 +1,4 @@
 #!/bin/bash
 
-/docker-entrypoint.d/ssh-config
-
+ssh-config
 python3 TFSec_part1.py
