@@ -1,8 +1,5 @@
 FROM docker.artifactory.internal.amount.com/linuxbrew/brew
 ARG VAULT_VERSION=0.10.1
-ARG VAULT_ADDR
-ARG VAULT_ROLE_ID
-ARG VAULT_SECRET_ID
 WORKDIR /usr/src/app
 
 COPY files/custom_ca.crt /usr/local/share/ca-certificates/custom_ca.crt
