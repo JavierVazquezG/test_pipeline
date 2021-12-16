@@ -26,4 +26,4 @@ COPY ./test.sh /tmp/test.sh
 
 RUN chmod +x /docker-entrypoint.d/ssh-config && mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && chmod +x /tmp/test.sh
 COPY . .
-ENTRYPOINT ["test.sh"]
+ENTRYPOINT ["/tmp/test.sh"]
