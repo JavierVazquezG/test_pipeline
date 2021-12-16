@@ -1,4 +1,4 @@
-FROM linuxbrew/brew
+FROM docker.artifactory.internal.amount.com/linuxbrew/brew
 ARG VAULT_VERSION=0.10.1
 ARG VAULT_ADDR
 ARG VAULT_ROLE_ID
