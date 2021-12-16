@@ -26,4 +26,4 @@ COPY ./secreports.sh .
 
 RUN chmod +x ssh-config && mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && chmod +x secreports.sh
 COPY . .
-ENTRYPOINT ["secreports.sh"]
+ENTRYPOINT ["./secreports.sh"]
