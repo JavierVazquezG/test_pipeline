@@ -58,7 +58,7 @@ if __name__ == '__main__':
                os.chdir(reposName)
                git.Repo.clone_from(ssh_clone_url, '.')
                os.system("tfsec . --format csv --out TFSec_Report_"+reposName+".csv")
-               os.system("mv TFSec_Report_"+reposName+".csv ~/")
+               os.system("mv TFSec_Report_"+reposName+".csv /usr/src/app/")
                file_Report = "TFSec_Report_"+reposName+".csv"
                
                os.system("cd /usr/src/app")
