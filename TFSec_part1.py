@@ -44,8 +44,8 @@ if __name__ == '__main__':
        
        for repo in data:
            if(repo["language"] == 'HCL'):
-               #date = datetime.datetime.now()
-               #folder_name = date.strftime('%Y-%m-%d')
+               date = datetime.datetime.now()
+               folder_name = date.strftime('%Y-%m-%d')
                reposName = repo["name"]
                ssh_clone_url = repo["ssh_url"]
                path = os.getcwd()
@@ -60,14 +60,7 @@ if __name__ == '__main__':
                os.system("tfsec . --format csv --out TFSec_Report_"+reposName+".csv")
                os.system("mv TFSec_Report_"+reposName+".csv /usr/src/app/")
                file_Report = "TFSec_Report_"+reposName+".csv"
-               
-               os.system("cd /usr/src/app")
-               pathactual=os.getcwd()
-               print(pathactual)
-               print("")
-               listado = os.system("ls -lrt")
-               print(listado)
-               
-               updateS3Bucket(S3Bucket, file_Report, "test1")
+               key= folder_name+'/'+file_Report
+               updateS3Bucket(S3Bucket, file_Report, key)
                os.chdir(path)
                shutil.rmtree('cloneReposDirectory')
