@@ -18,9 +18,9 @@ RUN mkdir /usr/local/src/vault && \
 RUN cd /usr/local/src/vault && sha256sum --quiet -c vault_${VAULT_VERSION}_linux_amd64.zip.sha256 && \
     if [ $? -eq 0 ]; then unzip /usr/local/src/vault/vault*.zip -d /usr/local/bin/ && rm -f /usr/local/src/vault/vault*.zip ; else exit 1 ; fi
 
-COPY ./ssh-config ~/
-COPY ./secreports.sh ~/
+COPY ./ssh-config /docker-entrypoint.d/
+COPY ./secreports.sh .
 
-RUN chmod +x ~/ssh-config && mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && chmod +x ~/secreports.sh
+RUN chmod +x /docker-entrypoint.d/ssh-config && mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && chmod +x /tmp/secreports.sh
 COPY . .
-ENTRYPOINT ["~/secreports.sh"]
+ENTRYPOINT ["/tmp/secreports.sh"]
