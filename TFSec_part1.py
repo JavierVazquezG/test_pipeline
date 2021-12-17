@@ -14,6 +14,7 @@ from datetime import date
 S3Bucket = os.getenv('S3_BUCKET')
 TOKEN_API = os.getenv('GIT_API')
 
+
 headers = {
     'accept': 'application/vnd.github.vixen-preview+json',
     'authorization': 'Bearer '+TOKEN_API,
@@ -41,7 +42,6 @@ if __name__ == '__main__':
        response = requests.get('https://api.github.com/orgs/amount/repos?page='+str(page)+'&per_page=100', headers=headers)
        data = response.json()
        
-       print (data)
        
        for repo in data:
            if(repo["language"] == 'HCL'):
@@ -50,6 +50,7 @@ if __name__ == '__main__':
                reposName = repo["name"]
                ssh_clone_url = repo["ssh_url"]
                path = os.getcwd()
+               print(path)
                if os.path.exists('cloneReposDirectory'):
                    shutil.rmtree('cloneReposDirectory')
                os.mkdir('cloneReposDirectory')
