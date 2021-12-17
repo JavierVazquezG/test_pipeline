@@ -60,8 +60,14 @@ if __name__ == '__main__':
                os.system("tfsec . --format csv --out TFSec_Report_"+reposName+".csv")
                os.system("mv TFSec_Report_"+reposName+".csv ~/")
                file_Report = "TFSec_Report_"+reposName+".csv"
+               
+               os.system("cd ~/")
+               pathactual=os.getcwd()
+               print(pathactual)
+               print("")
                listado = os.system("ls -lrt")
                print(listado)
+               
                updateS3Bucket(S3Bucket, file_Report, "test1")
                os.chdir(path)
                shutil.rmtree('cloneReposDirectory')
