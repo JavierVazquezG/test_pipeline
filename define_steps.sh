@@ -13,8 +13,3 @@ cat << EOF
             - VAULT_ROLE_ID
             - VAULT_SECRET_ID
 EOF
-#  - wait
-#  - name: "Copying Files"
-#    agents:
-#    commands: 'copyFiles.sh'
-#EOF

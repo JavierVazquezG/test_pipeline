@@ -24,18 +24,12 @@ headers = {
 #Setting the session of the boto3
 session = boto3.Session()
 
+#Updating the bucket specified by env variables 
 def updateS3Bucket(S3Bucket, filename, key):
     s3 = session.client('s3')
     s3.upload_file('/usr/src/app/'+filename, S3Bucket, key)
 
 if __name__ == '__main__':
-    
-    
-    # os.system("touch test.txt")
-    # os.system("ls -lrt ~/" )
-    # os.system("cd ~")
-    # os.system("pwd")
-    # updateS3Bucket(S3Bucket, "test.txt", "18")
     
 
     for page in range(1,32):
@@ -49,7 +43,6 @@ if __name__ == '__main__':
                reposName = repo["name"]
                ssh_clone_url = repo["ssh_url"]
                path = os.getcwd()
-               print(path)
                if os.path.exists('cloneReposDirectory'):
                    shutil.rmtree('cloneReposDirectory')
                os.mkdir('cloneReposDirectory')
