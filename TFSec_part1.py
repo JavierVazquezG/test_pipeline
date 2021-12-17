@@ -61,7 +61,7 @@ if __name__ == '__main__':
                os.system("mv TFSec_Report_"+reposName+".csv ~/")
                file_Report = "TFSec_Report_"+reposName+".csv"
                
-               os.system("cd ~/")
+               os.system("cd /usr/src/app")
                pathactual=os.getcwd()
                print(pathactual)
                print("")
